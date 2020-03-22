@@ -29,15 +29,16 @@ void showLidarTopview()
         int x = (-yw * imageSize.height / worldSize.height) + imageSize.width / 2;
 
         // cv::circle(topviewImg, cv::Point(x, y), 5, cv::Scalar(0, 0, 255), -1);
-        
-        // TODO: 
-        // 1. Change the color of the Lidar points such that 
+
+        // TODO:
+        // 1. Change the color of the Lidar points such that
         // X=0.0m corresponds to red while X=20.0m is shown as green.
-        // 2. Remove all Lidar points on the road surface while preserving 
+        // 2. Remove all Lidar points on the road surface while preserving
         // measurements on the obstacles in the scene.
 
         float zw = (*it).z; // world position in m with y facing left from sensor
-        if(zw > -1.40){
+        if (zw > -1.40)
+        {
             float val = it->x;
             float maxVal = worldSize.height;
             int red = min(255, (int)(255 * abs((val - maxVal) / maxVal)));
@@ -58,20 +59,20 @@ void showLidarTopview()
     double angle = -90;
 
     // get rotation matrix for rotating the image around its center in pixel coordinates
-    cv::Point2f center((topviewImg.cols-1)/2.0, (topviewImg.rows-1)/2.0);
+    cv::Point2f center((topviewImg.cols - 1) / 2.0, (topviewImg.rows - 1) / 2.0);
     cv::Mat rot = cv::getRotationMatrix2D(center, angle, 1.0);
     // determine bounding rectangle, center not relevant
     cv::Rect2f bbox = cv::RotatedRect(cv::Point2f(), topviewImg.size(), angle).boundingRect2f();
     // adjust transformation matrix
-    rot.at<double>(0,2) += bbox.width/2.0 - topviewImg.cols/2.0;
-    rot.at<double>(1,2) += bbox.height/2.0 - topviewImg.rows/2.0;
+    rot.at<double>(0, 2) += bbox.width / 2.0 - topviewImg.cols / 2.0;
+    rot.at<double>(1, 2) += bbox.height / 2.0 - topviewImg.rows / 2.0;
 
     // ratate and resize image
     cv::Mat dst;
     cv::warpAffine(topviewImg, dst, rot, bbox.size());
     string windowName = "Top-View Perspective of LiDAR data";
-    cv::resize(dst, dst, cv::Size(dst.cols/2, dst.rows/2));
-    
+    cv::resize(dst, dst, cv::Size(dst.cols / 2, dst.rows / 2));
+
     // display image
     cv::namedWindow(windowName, 6);
     cv::imshow(windowName, dst);
