@@ -69,7 +69,7 @@ P_rect_00: 7.215377e+02 0.000000e+00 6.095593e+02 0.000000e+00 0.000000e+00 7.21
 3. Transform points back into Euclidean coordinates and store the result.
 
 ---
-Reference
+ ### Reference
 * [The KITTI Vision Benchmark Suite](http://www.cvlibs.net/datasets/kitti/setup.php)
 * [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
 
