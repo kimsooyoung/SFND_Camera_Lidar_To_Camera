@@ -1,6 +1,6 @@
 # Sensor Fusion Self-Driving Car Course - Lidar to Camera
 
-This project implement transformation between Lidar-Sensed point cloud data and Camera image plain.
+This project implement transformation between Lidar-Sensed point cloud data and Camera image plane.
 
 ### Project Status:
 
@@ -23,8 +23,41 @@ This project implement transformation between Lidar-Sensed point cloud data and 
 
 ## Project Overview
 
+### 1. Show Lidar points on a top view
+
 <img width="1354" alt="lidar_to_camera" src="https://user-images.githubusercontent.com/12381733/77241801-d07d5880-6c3a-11ea-8167-057c322f8317.png">
 
-Here's few steps for doing projection from Lidar point cloud to camera image-plain.
+#### Implementation Step
 
-1. 
+1. Change the color of the Lidar points such that X=0.0m corresponds to red while X=20.0m is shown as green.
+2. Remove all Lidar points on the road surface while preserving measurements on the obstacles in the scene.
+
+### 2. Project Lidar Points to Camera Image Plane 
+
+Here's few steps for doing projection from Lidar point cloud to camera image plane.
+
+1. Convert each 3D point into homogeneous coordinates
+2. Apply the projection equation
+You must first know about 
+- Intrinsic camera calibration Mat > `"dat/calib_velo_to_cam.txt“`
+```
+"calib_velo_to_cam.txt“
+calib_time: 15-Mar-2012 11:37:16
+R: 7.533745e-03 -9.999714e-01 -6.166020e-04 1.480249e-02 7.280733e-04 -9.998902e-01 9.998621e-01 7.523790e-03 1.480755e-02
+
+T: -4.069766e-03 -7.631618e-02 -2.717806e-01
+…
+```
+- Extrinsic Mat for rotation and translation > `"dat/calib_cam_to_cam.txt“`
+```
+calib_time: 09-Jan-2012 13:57:47
+…
+R_rect_00: 9.999239e-01 9.837760e-03 -7.445048e-03 -9.869795e-03 9.999421e-01 -4.278459e-03 7.402527e-03 4.351614e-03 9.999631e-01
+
+P_rect_00: 7.215377e+02 0.000000e+00 6.095593e+02 0.000000e+00 0.000000e+00 7.215377e+02 1.728540e+02 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 0.000000e+00
+…
+```
+<img width="675" alt="공식" src="https://user-images.githubusercontent.com/12381733/77242026-a6796580-6c3d-11ea-9a94-0f8557bcfbfb.png">
+
+3. Transform points back into Euclidean coordinates and store the result.
+
