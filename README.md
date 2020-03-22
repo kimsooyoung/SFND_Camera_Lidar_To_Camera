@@ -40,7 +40,11 @@ Here's few steps for doing projection from Lidar point cloud to camera image pla
 
 1. Convert each 3D point into homogeneous coordinates
 2. Apply the projection equation
-You must first know about 
+
+<img width="675" alt="공식" src="https://user-images.githubusercontent.com/12381733/77242026-a6796580-6c3d-11ea-9a94-0f8557bcfbfb.png">
+
+You must first know about some parameters
+
 - Intrinsic camera calibration Mat > `"dat/calib_velo_to_cam.txt“`
 ```
 "calib_velo_to_cam.txt“
@@ -61,8 +65,6 @@ P_rect_00: 7.215377e+02 0.000000e+00 6.095593e+02 0.000000e+00 0.000000e+00 7.21
 ```
 
 > Those parameters and datasets provided from KITTI sensor setup
-
-<img width="675" alt="공식" src="https://user-images.githubusercontent.com/12381733/77242026-a6796580-6c3d-11ea-9a94-0f8557bcfbfb.png">
 
 3. Transform points back into Euclidean coordinates and store the result.
 
