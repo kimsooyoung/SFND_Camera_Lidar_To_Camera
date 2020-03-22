@@ -36,16 +36,16 @@ This project implement transformation between Lidar-Sensed point cloud data and 
 
 <img width="1354" alt="lidar_to_camera" src="https://user-images.githubusercontent.com/12381733/77241801-d07d5880-6c3a-11ea-8167-057c322f8317.png">
 
-Here's few steps for doing projection from Lidar point cloud to camera image plane.
+ Here's few steps for doing projection from Lidar point cloud to camera image plane.
 
-1. Convert each 3D point into homogeneous coordinates
-2. Apply the projection equation
+ 1. Convert each 3D point into homogeneous coordinates
+ 2. Apply the projection equation
 
 <img width="675" alt="공식" src="https://user-images.githubusercontent.com/12381733/77242026-a6796580-6c3d-11ea-9a94-0f8557bcfbfb.png">
 
-You must first know about some parameters
+ You must first know about some parameters
 
-- Intrinsic camera calibration Mat > `"dat/calib_velo_to_cam.txt“`
+  - Intrinsic camera calibration Mat > `"dat/calib_velo_to_cam.txt“`
 ```
 "calib_velo_to_cam.txt“
 calib_time: 15-Mar-2012 11:37:16
@@ -54,7 +54,7 @@ R: 7.533745e-03 -9.999714e-01 -6.166020e-04 1.480249e-02 7.280733e-04 -9.998902e
 T: -4.069766e-03 -7.631618e-02 -2.717806e-01
 …
 ```
-- Extrinsic Mat for rotation and translation > `"dat/calib_cam_to_cam.txt“`
+  - Extrinsic Mat for rotation and translation > `"dat/calib_cam_to_cam.txt“`
 ```
 calib_time: 09-Jan-2012 13:57:47
 …
@@ -66,7 +66,7 @@ P_rect_00: 7.215377e+02 0.000000e+00 6.095593e+02 0.000000e+00 0.000000e+00 7.21
 
 > Those parameters and datasets provided from KITTI sensor setup
 
-3. Transform points back into Euclidean coordinates and store the result.
+ 3. Transform points back into Euclidean coordinates and store the result.
 
 ---
  ### Reference
