@@ -25,7 +25,7 @@ This project implement transformation between Lidar-Sensed point cloud data and 
 
 ### 1. Show Lidar points on a top view
 
-<img width="1354" alt="lidar_to_camera" src="https://user-images.githubusercontent.com/12381733/77241801-d07d5880-6c3a-11ea-8167-057c322f8317.png">
+<img width="1112" alt="show_top_view" src="https://user-images.githubusercontent.com/12381733/77241878-fe16d180-6c3b-11ea-89e6-56782ce04254.png">
 
 #### Implementation Step
 
@@ -33,6 +33,8 @@ This project implement transformation between Lidar-Sensed point cloud data and 
 2. Remove all Lidar points on the road surface while preserving measurements on the obstacles in the scene.
 
 ### 2. Project Lidar Points to Camera Image Plane 
+
+<img width="1354" alt="lidar_to_camera" src="https://user-images.githubusercontent.com/12381733/77241801-d07d5880-6c3a-11ea-8167-057c322f8317.png">
 
 Here's few steps for doing projection from Lidar point cloud to camera image plane.
 
@@ -57,7 +59,15 @@ R_rect_00: 9.999239e-01 9.837760e-03 -7.445048e-03 -9.869795e-03 9.999421e-01 -4
 P_rect_00: 7.215377e+02 0.000000e+00 6.095593e+02 0.000000e+00 0.000000e+00 7.215377e+02 1.728540e+02 0.000000e+00 0.000000e+00 0.000000e+00 1.000000e+00 0.000000e+00
 …
 ```
+
+> Those parameters and datasets provided from KITTI sensor setup
+
 <img width="675" alt="공식" src="https://user-images.githubusercontent.com/12381733/77242026-a6796580-6c3d-11ea-9a94-0f8557bcfbfb.png">
 
 3. Transform points back into Euclidean coordinates and store the result.
+
+---
+Reference
+* [The KITTI Vision Benchmark Suite](http://www.cvlibs.net/datasets/kitti/setup.php)
+* [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
 
